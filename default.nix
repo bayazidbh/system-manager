@@ -8,13 +8,31 @@
     environment = {
       # Packages to install
       systemPackages = with pkgs; [
-        ripgrep fd duperemove
+        bat
       ];
       # Create config files in /etc
       etc = {
-        "system-manager.conf.test".text = ''
-          it works!!!!!
-        '';
+        "qemu.conf.test" = {
+          enable = true;
+          target = "libvirt/qemu.conf.test";
+          mode = "0600";
+          user = "root";
+          group = "root";
+          text = ''
+            # Master configuration file for the QEMU driver.
+            # All settings described here are optional - if omitted, sensible
+            # defaults are used.
+
+            #security_driver = [ "selinux", "apparmor" ]
+            #security_driver = "selinux"
+
+            group = "fenglengshun"
+            dynamic_ownership = 1
+            remember_owner = 1
+            swtpm_user = "swtpm"
+            swtpm_group = "swtpm"
+          '';
+        };
       };
     };
   };
