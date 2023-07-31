@@ -1,17 +1,17 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    system-manager = {
+    sysmgr = {
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, flake-utils, nixpkgs, system-manager }: {
-    systemConfigs.default = system-manager.lib.makeSystemConfig {
+  outputs = { self, nixpkgs, sysmgr }: {
+    systemConfigs.default = sysmgr.lib.makeSystemConfig {
       modules = [
-        ./pc/system.nix
+        ./default.nix
       ];
     };
   };
