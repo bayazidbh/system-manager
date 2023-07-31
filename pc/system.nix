@@ -8,8 +8,9 @@
           launch_the_rockets = true
         '';
       };
-      systemPackages = with pkgs; [
-        ripgrep fd duperemove
+      systemPackages = [
+        pkgs.ripgrep
+        pkgs.fd
       ];
     };
 
