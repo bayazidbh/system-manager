@@ -8,7 +8,7 @@
     environment = {
       # Packages to install
       systemPackages = with pkgs; [
-        bat
+        bat opensnitch opensnitch-ui
       ];
       # Create config files in /etc
       etc = {
