@@ -12,6 +12,11 @@
       ];
       # Create config files in /etc
       etc = {
+        "containers" = {
+          enable = true;
+          target = "containers";
+          source = "${./etc/containers}";
+        };
         "qemu.conf" = {
           enable = true;
           target = "libvirt/qemu.conf.test";
